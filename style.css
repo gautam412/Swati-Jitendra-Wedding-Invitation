@@ -1,0 +1,3184 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: "Noto Sans Devanagari", sans-serif;
+    background: #fff8ed;
+    color: #39272e;
+    overflow-x: hidden;
+}
+
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================================
+   COLORS
+========================================= */
+
+:root {
+
+    --maroon: #6d1835;
+
+    --dark-maroon: #310a1a;
+
+    --gold: #c69b4b;
+
+    --light-gold: #f1d18b;
+
+    --cream: #fff8ed;
+
+    --white: #ffffff;
+
+    --text: #39272e;
+
+    --muted: #776970;
+
+}
+
+
+/* =========================================
+   LOADER
+========================================= */
+
+#loader {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background: var(--dark-maroon);
+
+    color: white;
+
+    transition: 0.8s ease;
+
+}
+
+
+#loader.hide {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+}
+
+
+.loader-ring {
+
+    width: 60px;
+
+    height: 60px;
+
+    border-radius: 50%;
+
+    border: 2px solid rgba(255,255,255,0.2);
+
+    border-top-color: var(--light-gold);
+
+    animation: rotate 1s linear infinite;
+
+    margin: auto auto 20px;
+
+}
+
+
+.loader-content h3 {
+
+    font: 35px "Great Vibes";
+
+    color: var(--light-gold);
+
+}
+
+
+.loader-content p {
+
+    font-size: 13px;
+
+    margin-top: 5px;
+
+    opacity: .8;
+
+}
+
+
+@keyframes rotate {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    padding: 20px 6%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    z-index: 100;
+
+    color: white;
+
+    transition: .3s;
+
+}
+
+
+.navbar.scrolled {
+
+    background: rgba(49,10,26,.95);
+
+    backdrop-filter: blur(10px);
+
+    padding-top: 14px;
+
+    padding-bottom: 14px;
+
+}
+
+
+.logo {
+
+    font: 600 30px "Cormorant Garamond";
+
+    color: var(--light-gold);
+
+}
+
+
+nav {
+
+    display: flex;
+
+    gap: 25px;
+
+}
+
+
+nav a {
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    transition: .3s;
+
+}
+
+
+nav a:hover {
+
+    color: var(--light-gold);
+
+}
+
+
+.menu-button {
+
+    display: none;
+
+    background: transparent;
+
+    border: 0;
+
+    color: white;
+
+    font-size: 27px;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================
+   MUSIC BUTTON
+========================================= */
+
+.music-button {
+
+    position: fixed;
+
+    right: 20px;
+
+    bottom: 20px;
+
+    z-index: 200;
+
+    width: 50px;
+
+    height: 50px;
+
+    border-radius: 50%;
+
+    border: 1px solid var(--light-gold);
+
+    background: var(--maroon);
+
+    color: white;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    position: relative;
+
+    text-align: center;
+
+    color: white;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    /* Supplied Uttarkashi temple image as the hero background. */
+    background-image: url("Images/Background/kashi-vishwanath-uttarkashi.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+}
+
+
+/* Dark cinematic overlay keeps the invitation text readable. */
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background:
+        linear-gradient(180deg,
+            rgba(35, 7, 18, .48) 0%,
+            rgba(49, 10, 26, .28) 42%,
+            rgba(49, 10, 26, .68) 78%,
+            rgba(255, 248, 237, .98) 100%);
+
+}
+
+
+/* Soft blur/fade at the bottom so the temple scene melts into the
+   cream invitation section instead of ending with a hard edge. */
+.hero::after {
+
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 24%;
+    z-index: 1;
+    pointer-events: none;
+
+    background: linear-gradient(180deg,
+        rgba(255, 248, 237, 0) 0%,
+        rgba(255, 248, 237, .32) 42%,
+        rgba(255, 248, 237, .96) 100%);
+
+}
+
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 900px;
+    padding: 120px 20px 90px;
+
+}
+
+
+.sanskrit {
+
+    color: var(--light-gold);
+
+    font-size: 15px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.small-text {
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+    opacity: .85;
+
+}
+
+
+.hero h1 {
+
+    font: 600 clamp(70px, 12vw, 150px)
+          "Great Vibes";
+
+    line-height: 1.05;
+
+    color: var(--light-gold);
+
+    margin: 15px 0;
+
+    text-shadow: 0 8px 30px rgba(0,0,0,.25);
+
+}
+
+
+.hero h1 span {
+
+    color: #fff;
+
+}
+
+
+.hero-date {
+
+    font: 600 28px "Cormorant Garamond";
+
+    letter-spacing: 5px;
+
+}
+
+
+.hero-subtitle {
+
+    font-family: "Cormorant Garamond";
+
+    font-size: 20px;
+
+    margin: 10px 0 30px;
+
+}
+
+
+.gold-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    border: none;
+
+    background: linear-gradient(
+        135deg,
+        #d9b05b,
+        #9f722a
+    );
+
+    color: white;
+
+    padding: 14px 25px;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    transition: .3s;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
+
+}
+
+
+.gold-button:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 15px 35px rgba(0,0,0,.25);
+
+}
+
+
+.scroll-down {
+
+    position: absolute;
+
+    bottom: 25px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    opacity: .7;
+
+}
+
+
+.scroll-down span {
+
+    display: block;
+
+    font-size: 20px;
+
+}
+
+
+/* =========================================
+   GENERAL
+========================================= */
+
+.section {
+
+    padding: 100px 7%;
+
+}
+
+
+.section-heading {
+
+    text-align: center;
+
+    margin-bottom: 55px;
+
+}
+
+
+.section-label {
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: var(--gold);
+
+    font-weight: 700;
+
+}
+
+
+h2 {
+
+    font: 600 clamp(42px, 5vw, 65px)
+          "Cormorant Garamond";
+
+    color: var(--maroon);
+
+    margin-top: 8px;
+
+}
+
+
+.description {
+
+    max-width: 700px;
+
+    margin: auto;
+
+    line-height: 2;
+
+    color: var(--muted);
+
+    text-align: center;
+
+}
+
+
+/* =========================================
+   WELCOME
+========================================= */
+
+.welcome {
+
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    background:
+        radial-gradient(circle at 50% 15%, rgba(241,209,139,.20), transparent 34%),
+        var(--cream);
+
+}
+
+
+/* Intro layout for the supplied Ganesh artwork. */
+.welcome-inner {
+
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(280px, 420px) 1fr;
+    align-items: center;
+    gap: clamp(30px, 6vw, 90px);
+
+}
+
+
+.ganesh-intro-art {
+
+    position: relative;
+    min-height: 420px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+
+.ganesh-glow {
+
+    position: absolute;
+    width: 330px;
+    height: 330px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(198,155,75,.30), rgba(198,155,75,0) 70%);
+    filter: blur(8px);
+}
+
+
+.ganesh-intro-image {
+
+    position: relative;
+    z-index: 2;
+    width: min(100%, 410px);
+    height: 430px;
+    object-fit: contain;
+    filter: drop-shadow(0 22px 35px rgba(80,20,40,.20));
+    animation: ganeshFloat 5s ease-in-out infinite;
+}
+
+
+@keyframes ganeshFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+
+.welcome-copy {
+    position: relative;
+    z-index: 2;
+}
+
+
+.invitation-label {
+    margin-top: 12px;
+}
+
+
+.ornament {
+
+    font-size: 42px;
+
+    color: var(--gold);
+
+    margin-bottom: 15px;
+
+}
+
+
+.welcome h2 {
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =========================================
+   COUPLE
+========================================= */
+
+.couple-section {
+
+    background: white;
+
+}
+
+
+.couple-container {
+
+    max-width: 950px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 100px 1fr;
+
+    align-items: center;
+
+    gap: 25px;
+
+}
+
+
+.person {
+
+    text-align: center;
+
+}
+
+
+.person-image {
+
+    width: 100%;
+
+    max-width: 350px;
+
+    height: 400px;
+
+    margin: auto;
+
+    overflow: hidden;
+
+    border-radius: 180px 180px 20px 20px;
+
+    background: #d9b7a6;
+
+    box-shadow: 0 20px 50px rgba(80,20,40,.15);
+
+}
+
+
+.person h3 {
+
+    font: 600 38px "Great Vibes";
+
+    color: var(--maroon);
+
+    margin-top: 20px;
+
+}
+
+
+.person p {
+
+    font-size: 13px;
+
+    color: var(--muted);
+
+}
+
+
+.couple-heart {
+
+    text-align: center;
+
+    font-size: 50px;
+
+    color: #b82d50;
+
+    animation: heartbeat 1.5s infinite;
+
+}
+
+
+@keyframes heartbeat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+}
+
+
+/* =========================================
+   COUNTDOWN
+========================================= */
+
+.countdown-section {
+
+    background: var(--dark-maroon);
+
+    text-align: center;
+
+}
+
+
+.countdown-section h2 {
+
+    color: white;
+
+}
+
+
+.countdown {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: clamp(20px,6vw,80px);
+
+}
+
+
+.time-box strong {
+
+    display: block;
+
+    font: 600 clamp(40px,6vw,70px)
+          "Cormorant Garamond";
+
+    color: var(--light-gold);
+
+}
+
+
+.time-box span {
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: white;
+
+    opacity: .65;
+
+}
+
+
+/* =========================================
+   EVENTS
+========================================= */
+
+.events-section {
+
+    background: var(--cream);
+
+}
+
+
+.events-grid {
+
+    max-width: 1150px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(4,1fr);
+
+    gap: 18px;
+
+}
+
+
+.event-card {
+
+    background: white;
+
+    padding: 35px 20px;
+
+    text-align: center;
+
+    border: 1px solid #eadbc5;
+
+    transition: .4s;
+
+}
+
+
+.event-card:hover {
+
+    transform: translateY(-10px);
+
+    box-shadow: 0 20px 40px rgba(80,20,40,.12);
+
+}
+
+
+.event-card.featured {
+
+    background: var(--maroon);
+
+    color: white;
+
+}
+
+
+.event-icon {
+
+    font-size: 38px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.event-date {
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: var(--gold);
+
+    font-weight: 700;
+
+}
+
+
+.event-card h3 {
+
+    font: 600 37px "Cormorant Garamond";
+
+    color: var(--maroon);
+
+    margin: 8px;
+
+}
+
+
+.event-card.featured h3 {
+
+    color: var(--light-gold);
+
+}
+
+
+.event-card p {
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+}
+
+
+.event-card.featured p {
+
+    color: #f4e5d1;
+
+}
+
+
+.event-card small {
+
+    display: block;
+
+    margin-top: 20px;
+
+    color: var(--gold);
+
+}
+
+
+/* =========================================
+   STORY
+========================================= */
+
+.story-section {
+
+    background: #f7eee3;
+
+}
+
+
+.timeline {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    border-left: 1px solid #d2af6b;
+
+    padding-left: 40px;
+
+}
+
+
+.timeline-item {
+
+    position: relative;
+
+    padding-bottom: 55px;
+
+}
+
+
+.timeline-number {
+
+    position: absolute;
+
+    left: -61px;
+
+    width: 40px;
+
+    height: 40px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--maroon);
+
+    color: white;
+
+    font: 600 14px "Cormorant Garamond";
+
+}
+
+
+.timeline-item h3 {
+
+    font: 600 32px "Cormorant Garamond";
+
+    color: var(--maroon);
+
+}
+
+
+.timeline-item p {
+
+    color: var(--muted);
+
+    line-height: 1.8;
+
+    font-size: 14px;
+
+    margin-top: 5px;
+
+}
+
+
+/* =========================================
+   WEDDING GALLERY
+   Image ke actual ratio ke according
+   gallery frame automatically resize hoga.
+========================================= */
+
+.gallery-section {
+  background: #fff;
+}
+
+.gallery {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: grid;
+
+  /* Desktop par 3 columns */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  /*
+    1px row use ki gayi hai.
+    JavaScript actual image height calculate
+    karke required rows automatically set karega.
+  */
+  grid-auto-rows: 1px;
+
+  gap: 12px;
+  align-items: start;
+}
+
+/* Individual gallery frame */
+.gallery-item {
+  position: relative;
+
+  min-width: 0;
+  overflow: hidden;
+
+  background: #f5ebe5;
+
+  border-radius: 14px;
+
+  isolation: isolate;
+}
+
+/* =========================================
+   BLURRED IMAGE BACKGROUND
+========================================= */
+
+.gallery-item::before {
+  content: "";
+
+  position: absolute;
+  inset: -25px;
+
+  background-image: var(--gallery-bg, none);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  filter: blur(20px);
+
+  transform: scale(1.15);
+
+  opacity: 0.55;
+
+  z-index: 0;
+}
+
+/* Soft overlay */
+.gallery-item::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: rgba(255, 248, 237, 0.08);
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+/* =========================================
+   MAIN GALLERY IMAGE
+========================================= */
+
+.gallery-item img {
+  position: relative;
+
+  z-index: 2;
+
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  /*
+    IMPORTANT:
+    height: 100% mat lagana.
+    Image apne original aspect ratio ke
+    according height lega.
+  */
+  object-fit: contain;
+
+  transition:
+    transform 0.6s ease,
+    filter 0.6s ease;
+}
+
+/* Hover animation */
+.gallery-item:hover img {
+  transform: scale(1.03);
+}
+
+/*
+  Purana .large class ab manually 2 rows
+  nahi legi. JavaScript khud frame size
+  calculate karega.
+*/
+.gallery-item.large {
+  grid-row: auto;
+}
+
+
+/* =========================================
+   TABLET / MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    grid-auto-rows: 1px;
+
+    gap: 10px;
+  }
+
+}
+
+
+@media (max-width: 420px) {
+
+  .gallery {
+    grid-template-columns: 1fr;
+
+    grid-auto-rows: 1px;
+
+    gap: 10px;
+  }
+
+  .gallery-item.large {
+    grid-row: auto;
+  }
+
+}
+
+
+/* =========================================
+   VENUE
+========================================= */
+
+.venue-section {
+
+    background: var(--dark-maroon);
+
+}
+
+
+.venue-card {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 55px;
+
+    background: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+}
+
+
+.venue-card h2 {
+
+    margin-bottom: 5px;
+
+}
+
+
+.venue-address {
+
+    color: var(--muted);
+
+}
+
+
+.venue-time {
+
+    color: var(--gold);
+
+    margin-top: 8px;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================
+   RSVP
+========================================= */
+
+.rsvp-section {
+
+    background: var(--cream);
+
+    text-align: center;
+
+}
+
+
+.rsvp-card {
+
+    max-width: 650px;
+
+    margin: auto;
+
+}
+
+
+.rsvp-card > p:not(.section-label) {
+
+    color: var(--muted);
+
+    margin: 15px 0 25px;
+
+}
+
+
+#rsvpForm {
+
+    max-width: 450px;
+
+    margin: auto;
+
+    display: grid;
+
+    gap: 12px;
+
+}
+
+
+#rsvpForm input,
+#rsvpForm select {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: 1px solid #ddccb5;
+
+    border-radius: 8px;
+
+    background: white;
+
+    font: inherit;
+
+    outline: none;
+
+}
+
+
+#rsvpForm input:focus,
+#rsvpForm select:focus {
+
+    border-color: var(--gold);
+
+}
+
+
+/* =========================================
+   CLOSING
+========================================= */
+
+.closing-section {
+
+    padding: 110px 20px;
+
+    text-align: center;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle,
+            #7f2949,
+            #350b1c
+        );
+
+}
+
+
+.closing-section h2 {
+
+    font: 600 clamp(65px,9vw,110px)
+          "Great Vibes";
+
+    color: var(--light-gold);
+
+    margin: 10px;
+
+}
+
+
+.closing-section h2 span {
+
+    color: white;
+
+}
+
+
+.closing-section > p:not(.section-label) {
+
+    letter-spacing: 5px;
+
+    opacity: .8;
+
+}
+
+
+.outline-button {
+
+    margin-top: 30px;
+
+    background: transparent;
+
+    border: 1px solid var(--light-gold);
+
+    color: var(--light-gold);
+
+    border-radius: 30px;
+
+    padding: 13px 25px;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+
+    padding: 20px;
+
+    background: #200711;
+
+    color: #c9aab4;
+
+    text-align: center;
+
+    font-size: 11px;
+
+}
+
+
+/* =========================================
+   SCROLL ANIMATION
+========================================= */
+
+.reveal {
+
+    opacity: 0;
+
+    transform: translateY(35px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+
+}
+
+
+.reveal.show {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .events-grid {
+
+        grid-template-columns: repeat(2,1fr);
+
+    }
+
+
+    .couple-container {
+
+        grid-template-columns: 1fr 60px 1fr;
+
+    }
+
+
+    nav {
+
+        gap: 15px;
+
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+
+        padding: 15px 5%;
+
+    }
+
+
+    .menu-button {
+
+        display: block;
+
+    }
+
+
+    nav {
+
+        position: absolute;
+
+        top: 70px;
+
+        left: 5%;
+
+        right: 5%;
+
+        display: none;
+
+        flex-direction: column;
+
+        padding: 20px;
+
+        background: rgba(49,10,26,.98);
+
+        border-radius: 10px;
+
+        text-align: center;
+
+    }
+
+
+    nav.active {
+
+        display: flex;
+
+    }
+
+
+    .welcome-inner {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+
+    .ganesh-intro-art {
+        min-height: 330px;
+    }
+
+
+    .ganesh-intro-image {
+        height: 340px;
+    }
+
+
+    .hero h1 {
+
+        font-size: clamp(60px,18vw,95px);
+
+    }
+
+
+    .hero-date {
+
+        font-size: 22px;
+
+    }
+
+
+    .section {
+
+        padding: 70px 6%;
+
+    }
+
+
+    .couple-container {
+
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+
+    }
+
+
+    .couple-heart {
+
+        order: 2;
+
+    }
+
+
+    .person:last-child {
+
+        order: 3;
+
+    }
+
+
+    .person-image {
+
+        height: 380px;
+
+    }
+
+
+    .countdown {
+
+        gap: 10px;
+
+    }
+
+
+    .time-box strong {
+
+        font-size: 38px;
+
+    }
+
+
+    .time-box span {
+
+        font-size: 8px;
+
+    }
+
+
+    .events-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .timeline {
+
+        padding-left: 30px;
+
+    }
+
+
+    .timeline-number {
+
+        left: -51px;
+
+        width: 35px;
+
+        height: 35px;
+
+    }
+
+
+    .gallery {
+
+        grid-template-columns: 1fr 1fr;
+
+        grid-auto-rows: 150px;
+
+    }
+
+
+    .venue-card {
+
+        padding: 35px 25px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+
+    .venue-card .gold-button {
+
+        width: 100%;
+
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 420px) {
+
+    .ganesh-intro-art {
+        min-height: 285px;
+    }
+
+
+    .ganesh-intro-image {
+        height: 295px;
+    }
+
+
+    .hero h1 {
+
+        font-size: 58px;
+
+    }
+
+
+    .hero-date {
+
+        letter-spacing: 2px;
+
+    }
+
+
+    .person-image {
+
+        height: 330px;
+
+    }
+
+
+    .gallery {
+
+        grid-template-columns: 1fr;
+
+        grid-auto-rows: 220px;
+
+    }
+
+
+    .gallery-item.large {
+
+        grid-row: span 1;
+
+    }
+
+}
+
+/* =========================================================
+   PREMIUM CULTURAL DECORATIONS & 3D MOTION
+   Added for the supplied wedding artwork.
+========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    background: var(--cream);
+}
+
+/* ---------- Shared 3D motion ---------- */
+
+.floating-3d {
+    transform-style: preserve-3d;
+    animation: premiumFloat 5.5s ease-in-out infinite;
+    will-change: transform;
+}
+
+.parallax-3d {
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform .25s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes premiumFloat {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotateZ(0deg) rotateX(0deg);
+    }
+    30% {
+        transform: translate3d(0, -10px, 0) rotateZ(-1deg) rotateX(2deg);
+    }
+    60% {
+        transform: translate3d(0, -18px, 0) rotateZ(1.2deg) rotateX(-2deg);
+    }
+    80% {
+        transform: translate3d(0, -7px, 0) rotateZ(-.5deg);
+    }
+}
+
+/* ---------- Hero ornaments ---------- */
+
+.hero {
+    perspective: 1200px;
+}
+
+.hero-decor {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.hero-decor-left {
+    left: -25px;
+    bottom: -10px;
+    width: min(230px, 24vw);
+    transform: rotate(-8deg);
+    filter: drop-shadow(0 18px 30px rgba(0,0,0,.22));
+}
+
+.hero-decor-left img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.hero-decor-right {
+    top: 95px;
+    right: 5%;
+    width: clamp(80px, 10vw, 145px);
+    filter: drop-shadow(0 18px 25px rgba(0,0,0,.25));
+}
+
+.hero-decor-right img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.hero-shubh-vivah {
+    position: absolute;
+    top: 115px;
+    left: 50%;
+    z-index: 2;
+    width: clamp(120px, 15vw, 190px);
+    transform: translateX(-50%);
+    opacity: .9;
+    pointer-events: none;
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,.28));
+}
+
+.hero-shubh-vivah img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* ---------- Floating petals ---------- */
+
+.petals::before,
+.petals::after {
+    content: "✿  ·  ❀  ·  ✿  ·  ❀";
+    position: absolute;
+    top: -10%;
+    left: 8%;
+    color: rgba(255, 220, 185, .75);
+    font-size: 20px;
+    letter-spacing: 38px;
+    white-space: nowrap;
+    animation: fallingPetals 14s linear infinite;
+}
+
+.petals::after {
+    left: 45%;
+    animation-delay: -7s;
+    animation-duration: 18s;
+    opacity: .55;
+}
+
+@keyframes fallingPetals {
+    0% {
+        transform: translate3d(0, -10vh, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate3d(55px, 50vh, 0) rotate(160deg);
+    }
+    100% {
+        transform: translate3d(-25px, 115vh, 0) rotate(360deg);
+    }
+}
+
+/* ---------- Welcome artwork ---------- */
+
+.cultural-section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.section-bg-art {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+}
+
+.flower-bg {
+    background:
+        linear-gradient(rgba(255,248,237,.78), rgba(255,248,237,.9)),
+        url("Images/Background/Flower-Background.jpg") center / cover no-repeat;
+    opacity: .62;
+}
+
+.ganesh-frame-art {
+    position: absolute;
+    inset: -10px -40px -20px;
+    z-index: 0;
+    border-radius: 24px;
+    overflow: hidden;
+    opacity: .22;
+    transform: translateZ(-20px) scale(.98);
+}
+
+.ganesh-frame-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ganesh-intro-art {
+    perspective: 1000px;
+}
+
+.ganesh-intro-image {
+    z-index: 3;
+    filter: drop-shadow(0 25px 28px rgba(55,15,30,.24));
+}
+
+.ganesh-cutout {
+    position: absolute;
+    z-index: 4;
+    width: 180px !important;
+    height: auto !important;
+    right: -8px;
+    bottom: 4px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 22px rgba(55,15,30,.24));
+    animation-delay: -1.7s;
+}
+
+.shubh-vivah-logo {
+    width: min(260px, 75%);
+    height: auto;
+    margin: 22px auto 0;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 18px rgba(85,20,30,.16));
+}
+
+.mini-kalash-row {
+    position: absolute;
+    right: -25px;
+    bottom: -20px;
+    width: 100px;
+    opacity: .75;
+    pointer-events: none;
+}
+
+.mini-kalash-row img {
+    width: 100%;
+    height: auto;
+}
+
+.welcome-lotus {
+    position: absolute;
+    right: -100px;
+    bottom: -130px;
+    width: 390px;
+    height: auto;
+    opacity: .12;
+    filter: sepia(.6) drop-shadow(0 12px 20px rgba(120,70,20,.12));
+    pointer-events: none;
+}
+
+/* ---------- Cultural showcase ---------- */
+
+.cultural-showcase {
+    position: relative;
+    min-height: 690px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    overflow: hidden;
+    isolation: isolate;
+    background: #efe1ca;
+}
+
+.cultural-showcase-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+}
+
+.cultural-showcase-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(250,241,222,.75), rgba(250,241,222,.25), rgba(250,241,222,.75)),
+        linear-gradient(180deg, rgba(250,241,222,.45), rgba(65,28,17,.32));
+}
+
+.cultural-peacock {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .85;
+    transform: scale(1.04);
+}
+
+.cultural-copy {
+    max-width: 720px;
+    padding: 70px 30px;
+    position: relative;
+    z-index: 5;
+    border: 1px solid rgba(198,155,75,.38);
+    background: rgba(255,248,237,.70);
+    backdrop-filter: blur(7px);
+    box-shadow: 0 30px 80px rgba(45,16,20,.18);
+    border-radius: 28px;
+}
+
+.cultural-copy h2 {
+    color: var(--maroon);
+    margin: 12px 0;
+}
+
+.cultural-logo {
+    width: 185px;
+    height: auto;
+    margin-bottom: 8px;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 18px rgba(50,20,10,.22));
+}
+
+.namaste-art {
+    position: absolute;
+    z-index: 4;
+    width: clamp(155px, 18vw, 260px);
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 24px 22px rgba(50,15,20,.25));
+    pointer-events: none;
+}
+
+.bride-art {
+    left: 2%;
+    bottom: 0;
+    transform-origin: bottom center;
+}
+
+.groom-art {
+    right: 2%;
+    bottom: 0;
+    transform-origin: bottom center;
+    animation-delay: -2.3s;
+}
+
+/* ---------- Couple ---------- */
+
+.couple-section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.couple-bg-ornament {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: .075;
+}
+
+.couple-bg-ornament img {
+    position: absolute;
+    width: min(850px, 90vw);
+    right: -210px;
+    top: 8%;
+    height: auto;
+    object-fit: contain;
+    transform: rotate(-12deg);
+}
+
+.person-image {
+    transform-style: preserve-3d;
+    perspective: 900px;
+    transition: transform .5s ease, box-shadow .5s ease;
+}
+
+.person:hover .person-image {
+    transform: translateY(-8px) rotateX(3deg) rotateY(-3deg);
+    box-shadow: 0 30px 70px rgba(80,20,40,.22);
+}
+
+/* ---------- Events ---------- */
+
+.decorated-events {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.events-bg-frame {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: .18;
+}
+
+.events-bg-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.event-card {
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.event-card::after {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(198,155,75,.25);
+    pointer-events: none;
+    transform: translateZ(10px);
+}
+
+.event-card:hover {
+    transform: translateY(-10px) rotateX(2deg) rotateY(-2deg);
+}
+
+/* ---------- Story ---------- */
+
+.decorated-story {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.story-lotus {
+    position: absolute;
+    z-index: -1;
+    left: -130px;
+    bottom: -120px;
+    width: 460px;
+    opacity: .10;
+    filter: sepia(.8);
+    pointer-events: none;
+}
+
+/* ---------- Venue ---------- */
+
+.decorated-venue {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.venue-bg-palace {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: .25;
+}
+
+.venue-bg-palace img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.venue-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(198,155,75,.28);
+    box-shadow: 0 30px 80px rgba(20,5,10,.28);
+}
+
+.venue-card::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(198,155,75,.25);
+    pointer-events: none;
+}
+
+/* ---------- Closing ---------- */
+
+.closing-section {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.closing-feather {
+    position: absolute;
+    right: -90px;
+    top: -150px;
+    width: 430px;
+    opacity: .18;
+    z-index: -1;
+    transform: rotate(28deg);
+}
+
+.closing-feather img {
+    width: 100%;
+    height: auto;
+}
+
+.closing-leaves {
+    position: absolute;
+    left: -80px;
+    bottom: -100px;
+    width: 280px;
+    opacity: .25;
+    z-index: -1;
+    transform: rotate(7deg);
+}
+
+.closing-leaves img {
+    width: 100%;
+    height: auto;
+}
+
+/* ---------- Motion accessibility ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+/* ---------- Responsive cultural artwork ---------- */
+
+@media (max-width: 900px) {
+    .hero-shubh-vivah {
+        top: 92px;
+        width: 145px;
+    }
+
+    .ganesh-cutout {
+        width: 145px !important;
+        right: -5px;
+    }
+
+    .cultural-showcase {
+        min-height: 610px;
+    }
+
+    .namaste-art {
+        width: 150px;
+        opacity: .72;
+    }
+
+    .bride-art {
+        left: -35px;
+    }
+
+    .groom-art {
+        right: -35px;
+    }
+
+    .cultural-copy {
+        max-width: 600px;
+        margin: 0 18px;
+    }
+}
+
+@media (max-width: 700px) {
+    .hero-decor-left {
+        width: 145px;
+        left: -45px;
+        bottom: -5px;
+    }
+
+    .hero-decor-right {
+        top: 90px;
+        right: 5px;
+        width: 82px;
+    }
+
+    .hero-shubh-vivah {
+        top: 88px;
+        width: 120px;
+    }
+
+    .ganesh-frame-art {
+        inset: 0;
+        opacity: .14;
+    }
+
+    .ganesh-cutout {
+        width: 115px !important;
+        right: 4px;
+        bottom: 5px;
+    }
+
+    .shubh-vivah-logo {
+        width: 210px;
+    }
+
+    .mini-kalash-row {
+        width: 72px;
+        right: -5px;
+    }
+
+    .welcome-lotus {
+        width: 260px;
+        right: -120px;
+        bottom: -70px;
+    }
+
+    .cultural-showcase {
+        min-height: 590px;
+    }
+
+    .cultural-copy {
+        padding: 55px 22px 80px;
+        margin: 0 12px;
+        border-radius: 20px;
+    }
+
+    .cultural-logo {
+        width: 145px;
+    }
+
+    .namaste-art {
+        width: 125px;
+        opacity: .65;
+    }
+
+    .bride-art {
+        left: -25px;
+        bottom: -5px;
+    }
+
+    .groom-art {
+        right: -25px;
+        bottom: -5px;
+    }
+
+    .couple-bg-ornament img {
+        right: -230px;
+        top: 28%;
+    }
+
+    .events-bg-frame {
+        opacity: .11;
+    }
+
+    .story-lotus {
+        width: 300px;
+        left: -150px;
+    }
+
+    .venue-bg-palace {
+        opacity: .14;
+    }
+
+    .closing-feather {
+        right: -150px;
+        width: 340px;
+    }
+
+    .closing-leaves {
+        left: -110px;
+        width: 230px;
+    }
+}
+
+@media (max-width: 420px) {
+    .hero-decor-left {
+        width: 120px;
+        left: -55px;
+    }
+
+    .hero-decor-right {
+        width: 65px;
+        top: 92px;
+    }
+
+    .hero-shubh-vivah {
+        top: 82px;
+        width: 100px;
+    }
+
+    .ganesh-cutout {
+        width: 92px !important;
+    }
+
+    .cultural-showcase {
+        min-height: 560px;
+    }
+
+    .namaste-art {
+        width: 100px;
+        opacity: .5;
+    }
+
+    .bride-art {
+        left: -25px;
+    }
+
+    .groom-art {
+        right: -25px;
+    }
+}
+
+/* =========================================================
+   MOBILE RESPONSIVE FIX
+   Wedding Invitation Website
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Header */
+    header,
+    .navbar,
+    nav {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Main sections */
+    main,
+    section {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Hero / Image container */
+    .hero,
+    .hero-section,
+    .hero-image,
+    .main-image,
+    .image-container {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        box-sizing: border-box;
+    }
+
+    /* Images */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Main wedding images */
+    .hero img,
+    .hero-section img,
+    .hero-image img,
+    .main-image img,
+    .image-container img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: none;
+        object-fit: contain;
+    }
+
+    /* Gallery */
+    .gallery,
+    .gallery-container,
+    .gallery-grid {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    .gallery-item {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+    }
+
+    /* Remove desktop fixed heights */
+    .hero,
+    .hero-section,
+    .gallery-item,
+    .image-card,
+    .photo-card {
+        min-height: 0;
+    }
+
+    /* Prevent images from becoming extremely tall */
+    .hero img {
+        max-height: 75vh;
+        object-fit: cover;
+    }
+
+    /* Mobile spacing */
+    .hero-section,
+    .gallery-section {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    /* Mobile menu */
+    .mobile-menu,
+    .nav-menu {
+        max-width: 100vw;
+        box-sizing: border-box;
+    }
+
+}
+
+/* =========================================================
+   FINAL MOBILE PHOTO OVERLAP FIX
+   Keeps every wedding photo in its own row on phones.
+   This overrides JavaScript masonry/grid row-span values.
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    /* Use normal vertical flow on mobile. */
+    .gallery,
+    .gallery-container,
+    .gallery-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        grid-template-columns: none !important;
+        grid-auto-rows: auto !important;
+        gap: 18px !important;
+        padding: 0 !important;
+    }
+
+    /* Every photo gets its own complete block. */
+    .gallery-item,
+    .gallery-item.large {
+        display: block !important;
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        grid-row: auto !important;
+        grid-column: auto !important;
+        overflow: hidden !important;
+        flex: 0 0 auto !important;
+        transform: none;
+    }
+
+    /* Cancel any inline grid span added by JavaScript. */
+    .gallery-item[style] {
+        grid-row: auto !important;
+        grid-column: auto !important;
+        height: auto !important;
+    }
+
+    .gallery-item img {
+        position: relative !important;
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
+        max-height: none !important;
+        object-fit: contain !important;
+        transform: none;
+    }
+
+    /* Fixed navbar ke neeche content hide na ho. */
+    .gallery-section {
+        position: relative;
+        padding-top: 90px !important;
+    }
+}
+
+/* Extra-small phones */
+@media (max-width: 420px) {
+
+    .gallery {
+        gap: 16px !important;
+    }
+
+    .gallery-item,
+    .gallery-item.large {
+        border-radius: 12px;
+    }
+
+    .gallery-item img {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
+
+/* =========================================================
+   FINAL MOBILE HERO / FIRST-SCREEN FIX
+   ---------------------------------------------------------
+   On phones, 100vh can resolve to the browser's reduced
+   layout viewport. This makes the hero finish early and
+   reveals the next section before the first screen is done.
+   Use the dynamic viewport height so the hero occupies the
+   complete visible phone screen.
+========================================================= */
+
+@media (max-width: 768px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .hero {
+        width: 100%;
+        min-height: 100dvh;
+        height: 100dvh;
+        max-height: none;
+        padding: 0;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+        min-height: 100%;
+        padding: 105px 18px 120px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .hero h1 {
+        margin: 12px 0;
+        line-height: .98;
+        font-size: clamp(58px, 17vw, 92px);
+    }
+
+    .small-text {
+        font-size: clamp(11px, 3.1vw, 14px);
+        letter-spacing: 1.6px;
+    }
+
+    .sanskrit {
+        margin-bottom: 14px;
+        font-size: clamp(14px, 3.8vw, 17px);
+    }
+
+    .hero-date {
+        font-size: clamp(20px, 6vw, 27px);
+        letter-spacing: 2px;
+        white-space: nowrap;
+    }
+
+    .hero-subtitle {
+        font-size: clamp(17px, 4.8vw, 21px);
+        margin: 8px 0 24px;
+    }
+
+    .gold-button {
+        min-width: 205px;
+        min-height: 54px;
+        padding: 14px 24px;
+        font-size: 16px;
+    }
+
+    .scroll-down {
+        bottom: max(18px, env(safe-area-inset-bottom));
+        z-index: 6;
+    }
+
+    /* Keep the next section completely below the first screen. */
+    #invitation {
+        position: relative;
+        width: 100%;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .hero-content {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .hero h1 {
+        font-size: clamp(54px, 16.5vw, 78px);
+    }
+
+    .hero-date {
+        letter-spacing: 1px;
+    }
+
+    .hero-subtitle {
+        margin-bottom: 22px;
+    }
+
+}
+
+
+/* =========================================
+   LUXURY OPENING ANIMATION
+   ========================================= */
+#loader {
+    overflow: hidden;
+    background:
+        radial-gradient(circle at center, rgba(198,155,75,.16) 0 1px, transparent 2px),
+        radial-gradient(circle at center, #4b0d25 0%, #210713 48%, #10030a 100%);
+    background-size: 26px 26px, cover;
+}
+
+#loader::before {
+    content: "";
+    position: absolute;
+    width: min(78vw, 620px);
+    height: min(78vw, 620px);
+    border: 1px solid rgba(241,209,139,.20);
+    border-radius: 50%;
+    box-shadow: 0 0 80px rgba(198,155,75,.10), inset 0 0 80px rgba(198,155,75,.06);
+    animation: introPulse 3.6s ease-in-out infinite;
+}
+
+.luxury-intro-content {
+    position: relative;
+    z-index: 5;
+    width: min(92vw, 560px);
+    padding: 50px 30px;
+    animation: introContentIn 1.2s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.intro-monogram {
+    font: 600 22px "Cormorant Garamond", serif;
+    letter-spacing: 8px;
+    color: var(--light-gold);
+    margin-bottom: 22px;
+}
+
+.intro-monogram span { color: #e9a0b5; }
+
+.luxury-intro-content .loader-ring {
+    position: relative;
+    width: 92px;
+    height: 92px;
+    margin: 0 auto 24px;
+    border: 1px solid rgba(241,209,139,.28);
+    border-top-color: var(--light-gold);
+    border-right-color: rgba(241,209,139,.65);
+    box-shadow: 0 0 35px rgba(198,155,75,.14);
+    animation: rotate 1.8s linear infinite;
+}
+
+.luxury-intro-content .loader-ring::after {
+    content: "♥";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: #f4b6c9;
+    font-size: 20px;
+    animation: introHeart 1.5s ease-in-out infinite;
+}
+
+.intro-kicker {
+    font: 500 10px "Cormorant Garamond", serif;
+    letter-spacing: 5px;
+    color: rgba(255,255,255,.70);
+    margin-bottom: 12px;
+}
+
+.luxury-intro-content h3 {
+    font: 400 clamp(46px, 9vw, 72px) "Great Vibes", cursive;
+    color: #fff7e7;
+    text-shadow: 0 0 30px rgba(241,209,139,.14);
+}
+
+.luxury-intro-content h3 span { color: var(--light-gold); }
+
+.intro-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 18px auto;
+    width: min(260px, 70vw);
+}
+
+.intro-divider i { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(241,209,139,.65)); }
+.intro-divider i:last-child { background: linear-gradient(90deg, rgba(241,209,139,.65), transparent); }
+.intro-divider b { color: var(--light-gold); font-size: 13px; font-weight: 400; }
+
+.intro-date {
+    font: 500 12px "Cormorant Garamond", serif;
+    letter-spacing: 5px;
+    color: var(--light-gold);
+}
+
+.intro-welcome {
+    margin-top: 10px;
+    color: rgba(255,255,255,.68);
+    font-size: 12px;
+}
+
+.intro-orbit {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.intro-orbit-one {
+    width: min(68vw, 520px);
+    height: min(68vw, 520px);
+    margin: calc(min(68vw, 520px) / -2) 0 0 calc(min(68vw, 520px) / -2);
+    border: 1px dashed rgba(241,209,139,.16);
+    animation: introOrbit 18s linear infinite;
+}
+
+.intro-orbit-two {
+    width: min(48vw, 360px);
+    height: min(48vw, 360px);
+    margin: calc(min(48vw, 360px) / -2) 0 0 calc(min(48vw, 360px) / -2);
+    border: 1px solid rgba(241,209,139,.10);
+    animation: introOrbitReverse 12s linear infinite;
+}
+
+.intro-particle {
+    position: absolute;
+    color: var(--light-gold);
+    opacity: .6;
+    animation: introFloat 3.8s ease-in-out infinite;
+}
+.intro-particle-one { left: 18%; top: 27%; }
+.intro-particle-two { right: 17%; bottom: 26%; animation-delay: .8s; }
+.intro-particle-three { right: 26%; top: 20%; animation-delay: 1.5s; }
+
+@keyframes introContentIn { from { opacity: 0; transform: translateY(26px) scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes introPulse { 0%,100% { transform: scale(.96); opacity: .65; } 50% { transform: scale(1.03); opacity: 1; } }
+@keyframes introOrbit { to { transform: rotate(360deg); } }
+@keyframes introOrbitReverse { to { transform: rotate(-360deg); } }
+@keyframes introHeart { 50% { transform: scale(1.18); } }
+@keyframes introFloat { 50% { transform: translateY(-12px) rotate(8deg); opacity: 1; } }
+
+#loader.hide .luxury-intro-content { animation: introExit .7s ease forwards; }
+#loader.hide::before { animation: introExit .7s ease forwards; }
+@keyframes introExit { to { opacity: 0; transform: scale(1.06); } }
+
+/* =========================================
+   ROTATING COUPLE GALLERY SHOWCASE
+   ========================================= */
+.couple-gallery-showcase {
+    position: relative;
+    width: min(94vw, 900px);
+    min-height: 640px;
+    margin: 8px auto 55px;
+    display: grid;
+    place-items: center;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.showcase-aura {
+    position: absolute;
+    width: min(70vw, 470px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(198,155,75,.20), rgba(109,24,53,.07) 52%, transparent 70%);
+    filter: blur(4px);
+}
+
+.showcase-ring {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.showcase-ring-back {
+    width: min(76vw, 540px);
+    aspect-ratio: 1;
+    border: 1px solid rgba(198,155,75,.35);
+    border-left-color: transparent;
+    border-bottom-color: rgba(198,155,75,.12);
+    animation: showcaseSpin 16s linear infinite;
+}
+
+.showcase-ring-front {
+    width: min(64vw, 460px);
+    aspect-ratio: 1;
+    border: 1px dashed rgba(109,24,53,.34);
+    border-right-color: transparent;
+    animation: showcaseSpinReverse 11s linear infinite;
+}
+
+.showcase-orbit {
+    position: absolute;
+    width: min(82vw, 590px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1px solid rgba(198,155,75,.12);
+    animation: showcaseSpin 20s linear infinite;
+}
+
+.showcase-orbit span {
+    position: absolute;
+    left: 50%;
+    top: -9px;
+    transform: translateX(-50%);
+    color: var(--gold);
+    font-size: 14px;
+    background: #fff;
+    padding: 0 8px;
+}
+
+.orbit-b { width: min(58vw, 410px); animation-duration: 13s; animation-direction: reverse; }
+.orbit-b span { top: auto; bottom: -9px; }
+
+.showcase-photo-wrap {
+    position: relative;
+    width: min(68vw, 390px);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    z-index: 4;
+}
+
+.showcase-photo-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    filter: blur(20px) saturate(.85);
+    opacity: .55;
+    transform: scale(1.08);
+    animation: showcasePhotoOrbit 8s linear infinite;
+    transition: background-image .5s ease, opacity .5s ease;
+}
+
+.showcase-photo-frame {
+    position: relative;
+    width: 68%;
+    height: 76%;
+    overflow: hidden;
+    border-radius: 48% 48% 42% 42%;
+    border: 5px solid rgba(255,255,255,.9);
+    outline: 1px solid rgba(198,155,75,.8);
+    box-shadow: 0 25px 70px rgba(49,10,26,.22), 0 0 0 10px rgba(198,155,75,.06);
+    background: #f4e7d8;
+}
+
+.showcase-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: opacity .35s ease, transform .7s ease;
+}
+
+.showcase-photo-frame img.switching { opacity: 0; transform: scale(1.06); }
+
+.showcase-copy {
+    position: absolute;
+    bottom: 18px;
+    text-align: center;
+    z-index: 6;
+    padding: 10px 22px;
+    background: rgba(255,255,255,.82);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(198,155,75,.22);
+    border-radius: 999px;
+    box-shadow: 0 10px 35px rgba(49,10,26,.10);
+}
+
+.showcase-copy span {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--gold);
+}
+
+.showcase-copy h3 {
+    font: 400 34px "Great Vibes", cursive;
+    color: var(--maroon);
+    line-height: 1;
+    margin: 2px 0 0;
+}
+
+.showcase-copy p { font-size: 9px; color: var(--muted); margin-top: 3px; }
+
+.showcase-dots { position: absolute; bottom: -2px; display: flex; gap: 7px; z-index: 7; }
+.showcase-dots span { width: 5px; height: 5px; border-radius: 50%; background: rgba(198,155,75,.35); transition: .3s; }
+.showcase-dots span.active { width: 18px; border-radius: 99px; background: var(--gold); }
+
+@keyframes showcaseSpin { to { transform: rotate(360deg); } }
+@keyframes showcasePhotoOrbit { to { transform: scale(1.08) rotate(360deg); } }
+@keyframes showcaseSpinReverse { to { transform: rotate(-360deg); } }
+
+@media (max-width: 600px) {
+    .couple-gallery-showcase { min-height: 500px; margin-bottom: 38px; }
+    .showcase-copy { bottom: 6px; }
+    .showcase-copy h3 { font-size: 30px; }
+    .showcase-copy p { display: none; }
+}
+
+/* =========================================
+   GALLERY PHOTOS ORBIT AROUND CENTER PHOTO
+   ========================================= */
+.gallery-orbit-showcase {
+    min-height: 720px;
+    overflow: visible;
+}
+
+.gallery-orbit-track {
+    position: absolute;
+    width: min(82vw, 610px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    z-index: 3;
+    animation: galleryPhotosOrbit 24s linear infinite;
+    pointer-events: none;
+}
+
+.gallery-orbit-track::before {
+    content: "";
+    position: absolute;
+    inset: 3%;
+    border-radius: 50%;
+    border: 1px solid rgba(198,155,75,.20);
+    box-shadow: 0 0 50px rgba(198,155,75,.06);
+}
+
+.gallery-orbit-item {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: clamp(72px, 12vw, 108px);
+    aspect-ratio: 1;
+    padding: 5px;
+    border: 1px solid rgba(198,155,75,.72);
+    border-radius: 50%;
+    background: rgba(255,250,242,.96);
+    box-shadow: 0 10px 30px rgba(45,8,24,.22), 0 0 0 5px rgba(198,155,75,.07);
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(calc(min(41vw, 305px) * -1));
+    transform-origin: center center;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: filter .3s ease, box-shadow .3s ease;
+}
+
+.gallery-orbit-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,.9);
+    transform: rotate(calc(var(--angle) * -1));
+}
+
+.gallery-orbit-item:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 14px 38px rgba(45,8,24,.30), 0 0 0 7px rgba(198,155,75,.12);
+}
+
+.gallery-orbit-item:nth-child(odd) img {
+    animation: galleryThumbCounter 24s linear infinite;
+}
+
+.gallery-orbit-item:nth-child(even) img {
+    animation: galleryThumbCounterReverse 24s linear infinite;
+}
+
+@keyframes galleryPhotosOrbit {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes galleryThumbCounter {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+}
+
+@keyframes galleryThumbCounterReverse {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+}
+
+@media (max-width: 600px) {
+    .gallery-orbit-showcase {
+        min-height: 570px;
+    }
+
+    .gallery-orbit-track {
+        width: min(94vw, 500px);
+        animation-duration: 20s;
+    }
+
+    .gallery-orbit-item {
+        width: clamp(58px, 17vw, 82px);
+        transform: translate(-50%, -50%) rotate(var(--angle)) translateY(calc(min(47vw, 235px) * -1));
+    }
+}
+
+/* =========================================
+   GALLERY ORBIT - LARGER THUMBNAILS
+========================================= */
+.gallery-orbit-item {
+    width: clamp(100px, 14vw, 140px);
+    padding: 6px;
+}
+
+.gallery-orbit-item img {
+    border-width: 2px;
+}
+
+@media (max-width: 600px) {
+    .gallery-orbit-item {
+        width: clamp(78px, 20vw, 105px);
+        padding: 5px;
+    }
+}
+
+/* =========================================
+   ORBIT PHOTO LIGHTBOX
+========================================= */
+.orbit-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(18, 3, 12, .90);
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .3s ease, visibility .3s ease;
+}
+
+.orbit-lightbox.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.orbit-lightbox img {
+    display: block;
+    width: min(88vw, 760px);
+    max-height: 86vh;
+    object-fit: contain;
+    border-radius: 18px;
+    border: 2px solid rgba(198,155,75,.9);
+    box-shadow: 0 25px 90px rgba(0,0,0,.65), 0 0 45px rgba(198,155,75,.18);
+    transform: scale(.92);
+    transition: transform .35s ease;
+}
+
+.orbit-lightbox.is-open img {
+    transform: scale(1);
+}
+
+.orbit-lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(198,155,75,.75);
+    border-radius: 50%;
+    background: rgba(38,8,23,.78);
+    color: #fff;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+
+/* Card-based wedding schedule: keep all 9 events balanced */
+.events-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+@media (max-width: 1000px) {
+    .events-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
